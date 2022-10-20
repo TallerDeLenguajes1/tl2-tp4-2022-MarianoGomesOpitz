@@ -23,6 +23,38 @@ public class HomeController : Controller
         return View(cade);
     }
 
+    public IActionResult CrearCadete(Cadete cadete)
+    {
+        int i = 1;
+        if (cade.Cadetes.Count > 0)
+        {
+            foreach (var item in cade.Cadetes)
+            {
+                i = item.Id + 1;
+            }
+        }
+        cadete.Id = i;
+
+        cade.Cadetes.Add(cadete);
+        return RedirectToAction("Index");
+    }
+
+    public IActionResult BorrarCadete(int id)
+    {
+        Cadete cadeteABorrar = null;
+        foreach (var item in cade.Cadetes)
+        {
+            if (item.Id == id)
+            {
+                cadeteABorrar = item;
+            }
+        }
+
+        cade.Cadetes.Remove(cadeteABorrar);
+
+        return RedirectToAction("Index");
+    }
+
     public IActionResult Privacy()
     {
         return View();

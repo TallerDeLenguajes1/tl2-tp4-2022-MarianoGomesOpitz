@@ -20,7 +20,7 @@ public class Cadeteria
 
         this.Nombre = eleccion[0];
         this.Telefono = eleccion[1];
-        this.Cadetes = null;
+        this.Cadetes = new List<Cadete>();
     }
 
     public Cadeteria(string nombreCadeteria, string tel)

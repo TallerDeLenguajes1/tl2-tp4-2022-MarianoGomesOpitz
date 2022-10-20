@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Creación de cadete";
+    ViewData["Title"] = "Sistema de cadeteria";
 }
 
 @model SistemaCadeteria.Models.Cadeteria
@@ -8,8 +8,10 @@
     @Model.Nombre
 </h1>
 
+@Html.ActionLink("Crear cadete", "CrearCadete", "Home", new Cadete(), null)
+
 @{
-    if (Model.Cadetes != null)
+    if (Model.Cadetes.Count() > 0)
     {
 
         <table>
@@ -26,7 +28,7 @@
                     <td>@item.Nombre</td>
                     <td>@item.Telefono</td>
                     <td>@item.Direccion</td>
-                    @*<td>@Html.ActionLink("Eliminar", "Delete", new {id = item.Id})</td>*@
+                    <td>@Html.ActionLink("Eliminar", "BorrarCadete", "Home", item.Id, null)</td>
                 </tr>
             }
         </table>
