@@ -4,18 +4,6 @@
     ViewData["Title"] = @Model.Cadeteria.Nombre;
 }
 <h1>Listado de cadetes</h1>
-@if (Model.Cadeteria.Cadetes.Count() < 10)
-{
-    @Html.ActionLink("Contratar cadete",
-"CrearCadete",
-new Cadete(),
-new { onclick = "return confirm('¿Desea contratar un nuevo cadete?');" })
-}
-else
-{
-    <p>Cantidad máxima de cadetes alcanzada</p>
-}
-
 
 @{
     if (Model.Cadeteria.Cadetes.Count() > 0)
@@ -51,3 +39,19 @@ else
         <p>La cadetería no dispone de ningún cadete hasta el momento</p>
     }
 }
+
+@if (Model.Cadeteria.Cadetes.Count() < 10)
+{
+    @Html.ActionLink("Contratar cadete",
+"CrearCadete",
+new Cadete(),
+new { onclick = "return confirm('¿Desea contratar un nuevo cadete?');" })
+}
+else
+{
+    <p>Cantidad máxima de cadetes alcanzada</p>
+}
+
+<hr>
+
+<hr>
