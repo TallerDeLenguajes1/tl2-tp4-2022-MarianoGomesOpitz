@@ -1,0 +1,1 @@
+Los commits relacionados al TP son hasta el 4to. El 5to commit en adelante son actualizaciones relacionadas a la mejora y al agregado de características del código.

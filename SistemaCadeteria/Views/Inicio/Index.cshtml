@@ -1,17 +1,13 @@
-﻿@{
-    ViewData["Title"] = "Sistema de cadeteria";
+﻿@model SistemaCadeteria.Models.DBCadeteria
+
+@{
+    ViewData["Title"] = @Model.Cadeteria.Nombre;
 }
-
-@model SistemaCadeteria.Models.Cadeteria
-
-<h1>
-    @Model.Nombre
-</h1>
-@if (Model.Cadetes.Count() < 10)
+<h1>Listado de cadetes</h1>
+@if (Model.Cadeteria.Cadetes.Count() < 10)
 {
     @Html.ActionLink("Contratar cadete",
 "CrearCadete",
-"Home",
 new Cadete(),
 new { onclick = "return confirm('¿Desea contratar un nuevo cadete?');" })
 }
@@ -22,7 +18,7 @@ else
 
 
 @{
-    if (Model.Cadetes.Count() > 0)
+    if (Model.Cadeteria.Cadetes.Count() > 0)
     {
 
         <table class="tabla">
@@ -34,7 +30,7 @@ else
                 <th>Pedidos asignados</th>
                 <th></th>
             </tr>
-            @foreach (var item in Model.Cadetes)
+            @foreach (var item in Model.Cadeteria.Cadetes)
             {
                 <tr>
                     <td>@item.Id</td>

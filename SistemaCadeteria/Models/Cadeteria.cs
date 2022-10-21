@@ -30,14 +30,29 @@ public class Cadeteria
     }
 }
 
+public class DBCadeteria
+{
+    private Cadeteria cadeteria;
+    private List<Pedido> pedidosNoAsignados;
+
+    public Cadeteria Cadeteria { get => cadeteria; set => cadeteria = value; }
+    public List<Pedido> PedidosNoAsignados { get => pedidosNoAsignados; set => pedidosNoAsignados = value; }
+
+    public DBCadeteria()
+    {
+        this.Cadeteria = new Cadeteria();
+        this.PedidosNoAsignados = new List<Pedido>();
+    }
+}
+
 public class CadeteriaSingleton
 {
-    private static Cadeteria cadeteria = new Cadeteria();
+    private static DBCadeteria DataBase = new DBCadeteria();
 
     private CadeteriaSingleton() { }
 
-    public static Cadeteria Instance
+    public static DBCadeteria Instance
     {
-        get { return cadeteria; }
+        get { return DataBase; }
     }
 }

@@ -5,13 +5,13 @@ using System.IO;
 
 namespace SistemaCadeteria.Controllers;
 
-public class HomeController : Controller
+public class InicioController : Controller
 {
-    private readonly ILogger<HomeController> _logger;
+    private readonly ILogger<InicioController> _logger;
 
-    Cadeteria cadeteria = CadeteriaSingleton.Instance;
+    DBCadeteria cadeteriaDB = CadeteriaSingleton.Instance;
 
-    public HomeController(ILogger<HomeController> logger)
+    public InicioController(ILogger<InicioController> logger)
     {
         _logger = logger;
 
@@ -20,14 +20,14 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        return View(cadeteria);
+        return View(cadeteriaDB);
     }
 
     public IActionResult CrearCadete(Cadete cadete)
     {
         while (true)
         {
-            if (cadeteria.Cadetes.Exists(c => c.Nombre == cadete.Nombre))
+            if (cadeteriaDB.Cadeteria.Cadetes.Exists(c => c.Nombre == cadete.Nombre))
             {
                 cadete = new Cadete();
             }
@@ -38,31 +38,31 @@ public class HomeController : Controller
         }
 
         int i = 1;
-        if (cadeteria.Cadetes.Count > 0)
+        if (cadeteriaDB.Cadeteria.Cadetes.Count > 0)
         {
-            foreach (var item in cadeteria.Cadetes)
+            foreach (var item in cadeteriaDB.Cadeteria.Cadetes)
             {
                 i = item.Id + 1;
             }
         }
         cadete.Id = i;
 
-        cadeteria.Cadetes.Add(cadete);
+        cadeteriaDB.Cadeteria.Cadetes.Add(cadete);
         return RedirectToAction("Index");
     }
 
 
     public IActionResult BorrarCadete(int id)
     {
-        Cadete cadeteABorrar = cadeteria.Cadetes.Find(cadete => cadete.Id == id);
-        cadeteria.Cadetes.Remove(cadeteABorrar);
+        Cadete cadeteABorrar = cadeteriaDB.Cadeteria.Cadetes.Find(cadete => cadete.Id == id);
+        cadeteriaDB.Cadeteria.Cadetes.Remove(cadeteABorrar);
 
         return RedirectToAction("Index");
     }
 
     public IActionResult Privacy()
     {
-        return View(cadeteria);
+        return View(cadeteriaDB);
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
