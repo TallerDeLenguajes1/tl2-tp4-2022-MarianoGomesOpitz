@@ -12,6 +12,8 @@ public class Persona
 
     public Persona()
     {
+        this.Id = 0;
+
         var rand = new Random();        //Creo la variable de aleatoriedad a usar en todo el programa
         string archivoNombres = "Csv/Nombres.csv";      //Archivo que contiene nombres, números de teléfonos, y direcciones
         var leer = File.ReadAllLines(archivoNombres);       //Leo el archivo de nombres

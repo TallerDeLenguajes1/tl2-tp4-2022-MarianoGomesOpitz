@@ -7,7 +7,9 @@ public class Cliente : Persona
     public string DatosReferenciaDireccion { get => datosReferenciaDireccion; set => datosReferenciaDireccion = value; }
 
     public Cliente() : base()
-    { }
+    {
+        this.DatosReferenciaDireccion = "";
+    }
 
     public Cliente(int i, string[] eleccion)
     {
