@@ -21,15 +21,13 @@ public class InicioController : Controller
         return View(cadeteriaDB);
     }
 
-    public IActionResult CrearCadete(Cadete cadete)
+    public IActionResult CrearCadete()
     {
+        Cadete cadete;
         while (true)
         {
-            if (cadeteriaDB.Cadeteria.Cadetes.Exists(c => c.Nombre == cadete.Nombre))
-            {
                 cadete = new Cadete();
-            }
-            else
+            if (!(cadeteriaDB.Cadeteria.Cadetes.Exists(c => c.Nombre == cadete.Nombre)))
             {
                 break;
             }

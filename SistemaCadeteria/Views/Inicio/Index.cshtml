@@ -13,9 +13,7 @@
 @if (Model.Cadeteria.Cadetes.Count() < 10)
 {
     @Html.ActionLink("Contratar cadete",
-"CrearCadete",
-new Cadete(),
-new { onclick = "return confirm('¿Desea contratar un nuevo cadete?');" })
+"CrearCadete")
 }
 else
 {
@@ -73,7 +71,7 @@ else
 @{
     if (Model.PedidosNoAsignados.Count() > 0)
     {
-<table class="tabla">
+        <table class="tabla">
             <tr>
                 <th>Nro pedido</th>
                 <th></th>
@@ -81,7 +79,7 @@ else
             @foreach (var item in Model.PedidosNoAsignados)
             {
                 <tr>
-                    
+
                 </tr>
             }
         </table>
