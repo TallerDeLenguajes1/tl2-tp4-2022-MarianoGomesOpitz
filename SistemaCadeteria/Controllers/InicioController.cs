@@ -11,6 +11,8 @@ public class InicioController : Controller
 
     DBCadeteria cadeteriaDB = CadeteriaSingleton.Instance;
 
+    static int idCadete = 1;
+
     public InicioController(ILogger<InicioController> logger)
     {
         _logger = logger;
@@ -33,15 +35,8 @@ public class InicioController : Controller
             }
         }
 
-        int i = 1;
-        if (cadeteriaDB.Cadeteria.Cadetes.Count > 0)
-        {
-            foreach (var item in cadeteriaDB.Cadeteria.Cadetes)
-            {
-                i = item.Id + 1;
-            }
-        }
-        cadete.Id = i;
+        cadete.Id = idCadete;
+        idCadete++;
 
         cadeteriaDB.Cadeteria.Cadetes.Add(cadete);
         return RedirectToAction("Index");
