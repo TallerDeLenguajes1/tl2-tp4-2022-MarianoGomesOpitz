@@ -23,25 +23,35 @@ public class InicioController : Controller
         return View(cadeteriaDB);
     }
 
-    public IActionResult CrearCadete()
+    public IActionResult Crear()
     {
-        Cadete cadete;
-        while (true)
-        {
-                cadete = new Cadete();
-            if (!(cadeteriaDB.Cadeteria.Cadetes.Exists(c => c.Nombre == cadete.Nombre)))
-            {
-                break;
-            }
-        }
+        return View(cadeteriaDB);
+    }
 
-        cadete.Id = idCadete;
+    [HttpPost]
+    public IActionResult CrearCadete(string name, string adress, string phone)
+    {
+        cadeteriaDB.Cadeteria.Cadetes.Add(new Cadete(idCadete, name, adress, phone));
         idCadete++;
 
-        cadeteriaDB.Cadeteria.Cadetes.Add(cadete);
         return RedirectToAction("Index");
     }
 
+    public IActionResult Editar(int id)
+    {
+        return View(cadeteriaDB.Cadeteria.Cadetes.Find(x => x.Id == id));
+    }
+
+    [HttpPost]
+    public IActionResult EditarCadete(int id, string name, string adress, string phone)
+    {
+        Cadete cadeteEditar = cadeteriaDB.Cadeteria.Cadetes.Find(c => c.Id == id);
+        cadeteEditar.Nombre = name;
+        cadeteEditar.Direccion = adress;
+        cadeteEditar.Telefono = phone;
+
+        return RedirectToAction("Index");
+    }
 
     public IActionResult BorrarCadete(int id)
     {

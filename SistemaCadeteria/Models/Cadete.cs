@@ -11,12 +11,12 @@ public class Cadete : Persona
         this.Pedidos = new List<Pedido>();
     }
 
-    public Cadete(int i, string[] eleccion)
+    public Cadete(int id, string nombre, string direccion, string telefono)
     {
-        this.Id = i;
-        this.Nombre = eleccion[0];
-        this.Telefono = eleccion[1];
-        this.Direccion = eleccion[2];
+        this.Id = id;
+        this.Nombre = nombre;
+        this.Direccion = direccion;
+        this.Telefono = telefono;
         this.Pedidos = new List<Pedido>();
     }
 

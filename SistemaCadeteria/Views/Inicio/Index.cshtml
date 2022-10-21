@@ -1,7 +1,7 @@
 ﻿@model SistemaCadeteria.Models.DBCadeteria
 
 @{
-    ViewData["Title"] = @Model.Cadeteria.Nombre;
+    ViewData["Title"] = "Inicio";
 }
 <h1>Listado</h1>
 
@@ -13,7 +13,7 @@
 @if (Model.Cadeteria.Cadetes.Count() < 10)
 {
     @Html.ActionLink("Contratar cadete",
-"CrearCadete")
+"Crear")
 }
 else
 {
@@ -41,6 +41,7 @@ else
                     <td>@item.Telefono</td>
                     <td>@item.Direccion</td>
                     <td>@item.Pedidos.Count()</td>
+                    <td>@Html.ActionLink("Editar", "Editar", new {id = item.Id})</td>
                     <td>@Html.ActionLink("Dar de baja",
             "BorrarCadete",
             new {id = item.Id},

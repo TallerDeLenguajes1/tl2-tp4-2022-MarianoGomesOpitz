@@ -16298,8 +16298,23 @@
   "RootNamespace": "SistemaCadeteria",
   "Documents": [
     {
-      "FilePath": "d:\\tl2-tp4-2022-MarianoGomesOpitz\\SistemaCadeteria\\Views\\Home\\Privacy.cshtml",
-      "TargetPath": "Views\\Home\\Privacy.cshtml",
+      "FilePath": "d:\\tl2-tp4-2022-MarianoGomesOpitz\\SistemaCadeteria\\Views\\Inicio\\Index.cshtml",
+      "TargetPath": "Views\\Inicio\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\tl2-tp4-2022-MarianoGomesOpitz\\SistemaCadeteria\\Views\\Inicio\\Privacy.cshtml",
+      "TargetPath": "Views\\Inicio\\Privacy.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\tl2-tp4-2022-MarianoGomesOpitz\\SistemaCadeteria\\Views\\Inicio\\Editar.cshtml",
+      "TargetPath": "Views\\Inicio\\Editar.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\tl2-tp4-2022-MarianoGomesOpitz\\SistemaCadeteria\\Views\\Inicio\\Crear.cshtml",
+      "TargetPath": "Views\\Inicio\\Crear.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -16310,11 +16325,6 @@
     {
       "FilePath": "d:\\tl2-tp4-2022-MarianoGomesOpitz\\SistemaCadeteria\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
       "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "d:\\tl2-tp4-2022-MarianoGomesOpitz\\SistemaCadeteria\\Views\\Home\\Index.cshtml",
-      "TargetPath": "Views\\Home\\Index.cshtml",
       "FileKind": "mvc"
     },
     {
