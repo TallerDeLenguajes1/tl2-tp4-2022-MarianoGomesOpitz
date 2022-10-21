@@ -7,19 +7,32 @@
 <h1>
     @Model.Nombre
 </h1>
+@if (Model.Cadetes.Count() < 10)
+{
+    @Html.ActionLink("Contratar cadete",
+"CrearCadete",
+"Home",
+new Cadete(),
+new { onclick = "return confirm('¿Desea contratar un nuevo cadete?');" })
+}
+else
+{
+    <p>Cantidad máxima de cadetes alcanzada</p>
+}
 
-@Html.ActionLink("Crear cadete", "CrearCadete", "Home", new Cadete(), null)
 
 @{
     if (Model.Cadetes.Count() > 0)
     {
 
-        <table>
+        <table class="tabla">
             <tr>
                 <th>ID</th>
                 <th>Nombre</th>
                 <th>Teléfono</th>
                 <th>Dirección</th>
+                <th>Pedidos asignados</th>
+                <th></th>
             </tr>
             @foreach (var item in Model.Cadetes)
             {
@@ -28,7 +41,11 @@
                     <td>@item.Nombre</td>
                     <td>@item.Telefono</td>
                     <td>@item.Direccion</td>
-                    <td>@Html.ActionLink("Eliminar", "BorrarCadete", "Home", item.Id, null)</td>
+                    <td>@item.Pedidos.Count()</td>
+                    <td>@Html.ActionLink("Dar de baja",
+            "BorrarCadete",
+            new {id = item.Id},
+            new { onclick = $"return confirm('¿Está seguro que desea dar de baja al cadete {item.Nombre}?');"})</td>
                 </tr>
             }
         </table>

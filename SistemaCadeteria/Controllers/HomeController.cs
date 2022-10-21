@@ -9,7 +9,7 @@ public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
 
-    Cadeteria cade = CadeteriaSingleton.Instance;
+    Cadeteria cadeteria = CadeteriaSingleton.Instance;
 
     public HomeController(ILogger<HomeController> logger)
     {
@@ -20,44 +20,49 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        return View(cade);
+        return View(cadeteria);
     }
 
     public IActionResult CrearCadete(Cadete cadete)
     {
-        int i = 1;
-        if (cade.Cadetes.Count > 0)
+        while (true)
         {
-            foreach (var item in cade.Cadetes)
+            if (cadeteria.Cadetes.Exists(c => c.Nombre == cadete.Nombre))
+            {
+                cadete = new Cadete();
+            }
+            else
+            {
+                break;
+            }
+        }
+
+        int i = 1;
+        if (cadeteria.Cadetes.Count > 0)
+        {
+            foreach (var item in cadeteria.Cadetes)
             {
                 i = item.Id + 1;
             }
         }
         cadete.Id = i;
 
-        cade.Cadetes.Add(cadete);
+        cadeteria.Cadetes.Add(cadete);
         return RedirectToAction("Index");
     }
 
+
     public IActionResult BorrarCadete(int id)
     {
-        Cadete cadeteABorrar = null;
-        foreach (var item in cade.Cadetes)
-        {
-            if (item.Id == id)
-            {
-                cadeteABorrar = item;
-            }
-        }
-
-        cade.Cadetes.Remove(cadeteABorrar);
+        Cadete cadeteABorrar = cadeteria.Cadetes.Find(cadete => cadete.Id == id);
+        cadeteria.Cadetes.Remove(cadeteABorrar);
 
         return RedirectToAction("Index");
     }
 
     public IActionResult Privacy()
     {
-        return View();
+        return View(cadeteria);
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

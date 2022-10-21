@@ -16,3 +16,22 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+table th, table td {
+  padding: 0.3em;
+  border-color: black;
+}
+
+table th {
+  border-width: 2px;
+}
+
+table td {
+  border-width: thin;
+}
+
+table {
+  border-style: solid;
+  border-width: medium;
+  border-color: black;
+}

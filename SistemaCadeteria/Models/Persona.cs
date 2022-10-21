@@ -10,5 +10,16 @@ public class Persona
     public string Direccion { get => direccion; set => direccion = value; }
     public string Telefono { get => telefono; set => telefono = value; }
 
-    public Persona() { }
+    public Persona()
+    {
+        var rand = new Random();        //Creo la variable de aleatoriedad a usar en todo el programa
+        string archivoNombres = "Csv/Nombres.csv";      //Archivo que contiene nombres, números de teléfonos, y direcciones
+        var leer = File.ReadAllLines(archivoNombres);       //Leo el archivo de nombres
+        int posicion = rand.Next(leer.Length);     //Obtengo una información aleatoria del archivo
+        var eleccion = (leer[posicion]).Split(", ");       //Divido la información para tratarla como un arreglo
+
+        this.Nombre = eleccion[0];
+        this.Telefono = eleccion[1];
+        this.Direccion = eleccion[2];
+    }
 }
