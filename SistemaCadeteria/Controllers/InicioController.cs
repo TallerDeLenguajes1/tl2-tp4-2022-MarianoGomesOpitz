@@ -9,13 +9,11 @@ public class InicioController : Controller
 {
     private readonly ILogger<InicioController> _logger;
 
-    DBCadeteria cadeteriaDB;
+    DBCadeteria cadeteriaDB = CadeteriaSingleton.Instance;
 
     public InicioController(ILogger<InicioController> logger)
     {
         _logger = logger;
-
-        cadeteriaDB = CadeteriaSingleton.Instance;
     }
 
     public IActionResult Index()

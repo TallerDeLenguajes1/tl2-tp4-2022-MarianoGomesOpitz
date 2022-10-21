@@ -3,7 +3,24 @@
 @{
     ViewData["Title"] = @Model.Cadeteria.Nombre;
 }
-<h1>Listado de cadetes</h1>
+<h1>Listado</h1>
+
+<hr>
+
+<h3>Cadetes</h3>
+
+
+@if (Model.Cadeteria.Cadetes.Count() < 10)
+{
+    @Html.ActionLink("Contratar cadete",
+"CrearCadete",
+new Cadete(),
+new { onclick = "return confirm('¿Desea contratar un nuevo cadete?');" })
+}
+else
+{
+    <p>Se ha alcanzado la cantidad máxima de cadetes</p>
+}
 
 @{
     if (Model.Cadeteria.Cadetes.Count() > 0)
@@ -40,18 +57,37 @@
     }
 }
 
-@if (Model.Cadeteria.Cadetes.Count() < 10)
+<hr>
+
+<h3>Pedidos no asignados</h3>
+
+@if (Model.PedidosNoAsignados.Count() < 20)
 {
-    @Html.ActionLink("Contratar cadete",
-"CrearCadete",
-new Cadete(),
-new { onclick = "return confirm('¿Desea contratar un nuevo cadete?');" })
+    @*@Html.ActionLink()*@
 }
 else
 {
-    <p>Cantidad máxima de cadetes alcanzada</p>
+    <p>Se ha alcanzado la cantidad máxima de pedidos sin asignar</p>
 }
 
-<hr>
-
-<hr>
+@{
+    if (Model.PedidosNoAsignados.Count() > 0)
+    {
+<table class="tabla">
+            <tr>
+                <th>Nro pedido</th>
+                <th></th>
+            </tr>
+            @foreach (var item in Model.PedidosNoAsignados)
+            {
+                <tr>
+                    
+                </tr>
+            }
+        </table>
+    }
+    else
+    {
+        <p>La cadetería no tiene pedidos que realizar</p>
+    }
+}
