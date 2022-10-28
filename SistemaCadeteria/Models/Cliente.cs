@@ -11,15 +11,12 @@ public class Cliente : Persona
         this.DatosReferenciaDireccion = "";
     }
 
-    public Cliente(int i, string[] eleccion)
+    public Cliente(int i, string name, string direcc, string tel, string datosRef)
     {
         this.Id = i;
-
-        this.Nombre = eleccion[0];
-        this.Telefono = eleccion[1];
-        this.Direccion = eleccion[2];
-
-        Console.Write("Ingrese unos datos de referencia para la dirección: ");
-        this.DatosReferenciaDireccion = Console.ReadLine();
+        this.Nombre = name;
+        this.Direccion = direcc;
+        this.Telefono = tel;
+        this.DatosReferenciaDireccion = datosRef;
     }
 }

@@ -12,6 +12,7 @@ public class InicioController : Controller
     DBCadeteria cadeteriaDB = CadeteriaSingleton.Instance;
 
     static int idCadete = 1;
+    static int nroDePedido = 1;
 
     public InicioController(ILogger<InicioController> logger)
     {
@@ -23,7 +24,9 @@ public class InicioController : Controller
         return View(cadeteriaDB);
     }
 
-    public IActionResult Crear()
+    ////////////////////////////////////////////////////////////////////////////
+
+    public IActionResult CrearCad()
     {
         return View(cadeteriaDB);
     }
@@ -37,7 +40,7 @@ public class InicioController : Controller
         return RedirectToAction("Index");
     }
 
-    public IActionResult Editar(int id)
+    public IActionResult EditarCad(int id)
     {
         return View(cadeteriaDB.Cadeteria.Cadetes.Find(x => x.Id == id));
     }
@@ -60,6 +63,50 @@ public class InicioController : Controller
 
         return RedirectToAction("Index");
     }
+
+    ////////////////////////////////////////////////////////////////////////////
+
+    public IActionResult CrearPed()
+    {
+        return View(cadeteriaDB);
+    }
+
+    [HttpPost]
+    public IActionResult CrearPedido(string name, string direcc, string tel, string refDireccion, string obs)
+    {
+        cadeteriaDB.PedidosNoAsignados.Add(new Pedido(nroDePedido, obs, 1, new Cliente(nroDePedido, name, direcc, tel, refDireccion)));
+        nroDePedido++;
+
+        return RedirectToAction("Index");
+    }
+
+    public IActionResult EditarPed(int nPedido)
+    {
+        return View(cadeteriaDB.PedidosNoAsignados.Find(x => x.NroPedido == nPedido));
+    }
+
+    [HttpPost]
+    public IActionResult EditarPedido(int nroPed, string name, string direcc, string tel, string refDireccion, string obs)
+    {
+        Pedido pedidoAEditar = cadeteriaDB.PedidosNoAsignados.Find(x => x.NroPedido == nroPed);
+        pedidoAEditar.Costumer.Nombre = name;
+        pedidoAEditar.Costumer.Direccion = direcc;
+        pedidoAEditar.Costumer.Telefono = tel;
+        pedidoAEditar.Costumer.DatosReferenciaDireccion = refDireccion;
+        pedidoAEditar.Observaciones = obs;
+
+        return RedirectToAction("Index");
+    }
+
+    public IActionResult BorrarPedido(int nPedido)
+    {
+        Pedido pedidoABorrar = cadeteriaDB.PedidosNoAsignados.Find(x => x.NroPedido == nPedido);
+        cadeteriaDB.PedidosNoAsignados.Remove(pedidoABorrar);
+
+        return RedirectToAction("Index");
+    }
+
+    ////////////////////////////////////////////////////////////////////////////
 
     public IActionResult Privacy()
     {

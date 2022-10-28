@@ -21,12 +21,11 @@ public class Pedido
         this.Costumer = new Cliente();
     }
 
-    public Pedido(int i, int est, Cliente cos)
+    public Pedido(int i, string obs, int est, Cliente cos)
     {
         this.NroPedido = i;
 
-        Console.Write("¿Alguna observación acerca del pedido?: ");
-        this.Observaciones = Console.ReadLine();
+        this.Observaciones = obs;
 
         this.Estado = (status)est;
 

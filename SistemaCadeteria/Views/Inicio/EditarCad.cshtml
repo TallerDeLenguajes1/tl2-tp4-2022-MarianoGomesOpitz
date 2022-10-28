@@ -3,6 +3,8 @@
     ViewData["Title"] = "Modificación de cadete";
 }
 
+@Html.ActionLink("Cancelar", "Index", "Inicio")
+
 @using (Html.BeginForm("EditarCadete", "Inicio"))
 {
     <input type="hidden" name="id" value="@Model.Id">
@@ -14,7 +16,7 @@
         Dirección: <input type="text" name="adress" id="adress" value="@Model.Direccion">
     </label>
     <label for="phone">
-        Teléfono<input type="text" name="phone" id="phone" value="@Model.Telefono">
+        Teléfono: <input type="text" name="phone" id="phone" value="@Model.Telefono">
     </label>
     <input type="submit" , value="Guardar cambios">
 }
