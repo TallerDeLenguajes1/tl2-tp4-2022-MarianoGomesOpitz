@@ -7,16 +7,10 @@ public class Cliente : Persona
     public string DatosReferenciaDireccion { get => datosReferenciaDireccion; set => datosReferenciaDireccion = value; }
 
     public Cliente() : base()
-    {
-        this.DatosReferenciaDireccion = "";
-    }
+    { }
 
-    public Cliente(int i, string name, string direcc, string tel, string datosRef)
+    public Cliente(int i, string name, string direcc, string tel, string datosRef) : base(i, name, direcc, tel)
     {
-        this.Id = i;
-        this.Nombre = name;
-        this.Direccion = direcc;
-        this.Telefono = tel;
         this.DatosReferenciaDireccion = datosRef;
     }
 }

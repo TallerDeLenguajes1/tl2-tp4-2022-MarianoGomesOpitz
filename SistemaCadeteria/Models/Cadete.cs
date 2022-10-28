@@ -11,12 +11,8 @@ public class Cadete : Persona
         this.Pedidos = new List<Pedido>();
     }
 
-    public Cadete(int id, string nombre, string direccion, string telefono)
+    public Cadete(int i, string name, string direcc, string tel) : base(i, name, direcc, tel)
     {
-        this.Id = id;
-        this.Nombre = nombre;
-        this.Direccion = direccion;
-        this.Telefono = telefono;
         this.Pedidos = new List<Pedido>();
     }
 
